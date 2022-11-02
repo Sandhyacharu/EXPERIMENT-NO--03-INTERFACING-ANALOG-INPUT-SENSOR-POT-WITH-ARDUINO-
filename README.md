@@ -13,7 +13,6 @@
 4.	USB Interfacing cable 
 5.	Connecting wires 
 6.	LED of choice 
-**
 
 
 **THEORY**: 
@@ -40,19 +39,14 @@ General specifications of analog sensor
 
 **Potentiometer**
 A potentiometer, informally a pot, is a three-terminal resistor with a sliding or rotating contact that forms an adjustable voltage divider. If only two terminals are used, one end and the wiper, it acts as a variable resistor or rheostat.
-Potentiometers are commonly used to control electrical devices such as volume controls on audio equipment. Potentiometers operated by a mechanism can be used as position transducers, for example, in a joystick. Potentiometers are rarely used to directly control significant power (more than a watt), since the power dissipated in the potentiometer would be comparable to the power in the controlled load
-CIRCUIT DIAGRAM
+Potentiometers are commonly used to control electrical devices such as volume controls on audio equipment. Potentiometers operated by a mechanism can be used as position transducers, for example, in a joystick. Potentiometers are rarely used to directly control significant power (more than a watt), since the power dissipated in the potentiometer would be comparable to the power in the controlled load.
 
-
-
-
+## CIRCUIT DIAGRAM
 
 ![image](https://user-images.githubusercontent.com/36288975/163530788-eec3cdc3-95e8-4d2d-8349-6d0ea4c9439c.png)
 
-**FIGURE -01
-**
 
-**PROCEDURE:**
+## PROCEDURE:
 
 1.	Connect the circuit as per the circuit diagram 
 2.	Connect the board to your computer via the USB cable.
@@ -66,28 +60,38 @@ CIRCUIT DIAGRAM
 
 
 
-**PROGRAM** 
- 
+## PROGRAM :
+ ```python
+void setup()
+{
+  pinMode(A0,INPUT);
+  pinMode(7,OUTPUT);
+  pinMode(8,OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  int Sensorvalue = analogRead(A0);
+  Serial.print("Sensor Value= ");
+  Serial.println(Sensorvalue);
+  if(Sensorvalue<=30)
+  {
+    digitalWrite(8,HIGH);
+    digitalWrite(7,LOW);
+  }
+  else if(Sensorvalue>=500)
+  {
+    digitalWrite(8,LOW);
+    digitalWrite(7,HIGH);
+  }
+}
+
+```
+## Simulation output: 
+
+<img width="677" alt="image" src="https://user-images.githubusercontent.com/75235554/199390381-95a3f115-75d4-440a-bef6-c24c6f93983c.png">
 
 
-
-
-
-
-
-
-
-**
-**Simulation output:** 
-**
-
-
-[My image](username.github.com/repository/img/image.jpg)
-
-
-
-
-
-
-
-**RESULT: ** Arduino uno analog input functioning is learned and interfaced with digital input switch .
+## RESULT: 
+Arduino uno analog input functioning is learned and interfaced with digital input switch .
